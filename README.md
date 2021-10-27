@@ -6,8 +6,8 @@ Before you can either run it locally or deploy it to google cloud, you need to d
 
 Install dependencies for local run:
 
-        npm install
-        npm start
+    npm install
+    npm start
 
 ## Running locally
     node app.js
