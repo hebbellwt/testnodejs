@@ -1,23 +1,15 @@
 # Quickstart to learn Node.js in the Google App Engine standard environment
 
-* [Setup](#setup)
-* [Running locally](#running-locally)
-* [Deploying to App Engine](#deploying-to-app-engine)
-<!--* [Running the tests](#running-the-tests)-->
-
 ## Setup
 
-Before you can run or deploy the sample, you need to do the following:
+Before you can either run it locally or deploy it to google cloud, you need to do the following:
 
-1.  Refer to the [appengine/README.md][readme] file for instructions on
-    running and deploying.
-1.  Install dependencies:
+Install dependencies for local run:
 
         npm install
+        npm start
 
 ## Running locally
-
-    npm start
     node app.js
 
 ## Deploying to App Engine
