@@ -3,33 +3,39 @@ var fs = require('fs');
 var url = require('url');
  
  
-// 创建服务器
+// create server
 http.createServer( function (request, response) {  
-   // 解析请求，包括文件名
-   var pathname = url.parse(request.url).pathname;
+   // parse url and path
+   var pathname = url.parse(request.url).pathname.substr(1);
    
-   // 输出请求的文件名
+   // print path
    console.log("Request for " + pathname + " received.");
-   
-   // 从文件系统中读取请求的文件内容
-   fs.readFile(pathname.substr(1), function (err, data) {
+
+   // set default path to "index.html"
+   if (fs.existsSync(pathname) == false) {
+   	pathname = 'index.html';
+   	console.log("Redirect to " + pathname);
+   }
+
+   // read path from file system
+   fs.readFile(pathname, function (err, data) {
       if (err) {
          console.log(err);
-         // HTTP 状态码: 404 : NOT FOUND
+         // HTTP Status Code: 404 : NOT FOUND
          // Content Type: text/html
          response.writeHead(404, {'Content-Type': 'text/html'});
       }else{             
-         // HTTP 状态码: 200 : OK
+         // HTTP Status Code: 200 : OK
          // Content Type: text/html
          response.writeHead(200, {'Content-Type': 'text/html'});    
          
-         // 响应文件内容
+         // write content into response
          response.write(data.toString());        
       }
-      //  发送响应数据
+      // send response
       response.end();
    });   
 }).listen(8080);
  
-// 控制台会输出以下信息
+// console output
 console.log('Server running at http://127.0.0.1:8080/');
